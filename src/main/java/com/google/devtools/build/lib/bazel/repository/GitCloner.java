@@ -245,7 +245,7 @@ public class GitCloner {
       // This is a lame catch-all for jgit throwing RuntimeExceptions all over the place because,
       // as the docs put it, "a lot of exceptions are so low-level that is is unlikely that the
       // caller of the command can handle them effectively." Thanks, jgit.
-      throw new RepositoryFunctionException(new IOException(e.getMessage()),
+      throw new RepositoryFunctionException(new IOException(e.getMessage() + ": " + e.getCause().getMessage()),
           Transience.PERSISTENT);
     } finally {
       if (git != null) {
